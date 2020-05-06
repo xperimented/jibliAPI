@@ -65,6 +65,27 @@ class ColisController extends Controller
             ], 500);
     }
  
-    
+    public function destroy($id)
+    {
+        $colis = auth()->user()->colis()->find($id);
+ 
+        if (!$colis) {
+            return response()->json([
+                'success' => false,
+                'message' => 'colis with id ' . $id . ' not found'
+            ], 400);
+        }
+ 
+        if ($colis->delete()) {
+            return response()->json([
+                'success' => true
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'colis could not be deleted'
+            ], 500);
+        }
+    }
  
 }
