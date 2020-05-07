@@ -64,6 +64,29 @@ class ColisController extends Controller
                 
             ], 500);
     }
+    public function update(Request $request, $id)
+    {
+        $colis = auth()->user()->colis()->find($id);
+ 
+        if (!$colis) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Colis with id ' . $id . ' not found'
+            ], 400);
+        }
+ 
+        $updated = $colis->fill($request->all())->save();
+ 
+        if ($updated)
+            return response()->json([
+                'success' => true
+            ]);
+        else
+            return response()->json([
+                'success' => false,
+                'message' => 'Colis could not be updated'
+            ], 500);
+    }
  
     public function destroy($id)
     {
@@ -87,5 +110,5 @@ class ColisController extends Controller
             ], 500);
         }
     }
- 
+    
 }
