@@ -75,7 +75,7 @@ class ColisController extends Controller
             ], 400);
         }
  
-        $updated = $colis->fill($request->all())->save();
+        $updated = $colis->update($request->all());
          
         if ($updated)
             return response()->json([
