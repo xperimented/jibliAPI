@@ -60,7 +60,7 @@ class ColisController extends Controller
         else
             return response()->json([
                 'success' => false,
-                'message' => 'Product could not be added'
+                'message' => 'Colis could not be added'
                 
             ], 500);
     }
