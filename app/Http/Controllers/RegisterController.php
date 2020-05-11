@@ -15,6 +15,8 @@ namespace App\Http\Controllers;
      public function register(Request $request)
      {
          $this->validate($request, [
+
+            
              'nom' => 'required|min:3',
              'prenom' => 'required',
              'adresse' => 'required',
