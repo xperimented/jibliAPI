@@ -75,12 +75,12 @@ class ColisController extends Controller
             ], 400);
         }
  
-        $updated = $colis->update($request->all());
+        $updated = $colis -> fill($request-> all()) -> save();
          
         if ($updated)
             return response()->json([
                 'success' => true,
-                'data' => $colis
+                'message' => 'colis'
             ]);
         else
             return response()->json([
